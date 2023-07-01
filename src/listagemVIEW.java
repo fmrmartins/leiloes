@@ -120,10 +120,10 @@ public class listagemVIEW extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         String id = id_produto_venda.getText();
-        
+
         ProdutosDAO produtosdao = new ProdutosDAO();
-        
-        //produtosdao.venderProduto(Integer.parseInt(id));
+
+        produtosdao.venderProduto(Integer.parseInt(id));
         listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
@@ -137,30 +137,7 @@ public class listagemVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(listagemVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(listagemVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(listagemVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(listagemVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new listagemVIEW().setVisible(true);
@@ -181,16 +158,16 @@ public class listagemVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos;
     // End of variables declaration//GEN-END:variables
 
-    private void listarProdutos(){
+    private void listarProdutos() {
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
-            
+
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
             model.setNumRows(0);
-            
+
             ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
-            
-            for(int i = 0; i < listagem.size(); i++){
+
+            for (int i = 0; i < listagem.size(); i++) {
                 model.addRow(new Object[]{
                     listagem.get(i).getId(),
                     listagem.get(i).getNome(),
@@ -200,8 +177,8 @@ public class listagemVIEW extends javax.swing.JFrame {
             }
             this.listaProdutos.setModel(model);
         } catch (Exception e) {
-            
+
         }
-    
+
     }
 }
