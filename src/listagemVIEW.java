@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class listagemVIEW extends javax.swing.JFrame {
@@ -120,11 +121,15 @@ public class listagemVIEW extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         String id = id_produto_venda.getText();
-
         ProdutosDAO produtosdao = new ProdutosDAO();
-
-        produtosdao.venderProduto(Integer.parseInt(id));
-        listarProdutos();
+        if (produtosdao.venderProduto(Integer.parseInt(id))==1){
+            JOptionPane.showMessageDialog(rootPane, "Produto atualizado com sucesso!");
+            id_produto_venda.setText("");
+            listarProdutos();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Verifique o numero id inserido!");
+        }
+        
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed

@@ -55,6 +55,7 @@ public class ProdutosDAO {
 
     int venderProduto(int id) {
         int status;
+        conn = new conectaDAO().connectDB();
         try {
             prep = conn.prepareStatement("UPDATE produtos SET status = ? where id = ?");
             prep.setString(1, "Vendido");
