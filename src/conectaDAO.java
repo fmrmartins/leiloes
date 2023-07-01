@@ -4,15 +4,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-
 public class conectaDAO {
 
     private String url = "jdbc:mysql://localhost:3306/leiloes"; //Nome da base de dados
     private String user = "root"; //nome do usuário do MySQL
     private String password = "z5abg0ty";
+    Connection conn = null;
 
     public Connection connectDB() {
-        Connection conn = null;
+
         try {
 
             conn = DriverManager.getConnection(url, user, password);
@@ -22,6 +22,6 @@ public class conectaDAO {
             JOptionPane.showMessageDialog(null, "Erro ConectaDAO" + erro.getMessage());
         }
         return conn;
-    }
+    }   
 
 }
