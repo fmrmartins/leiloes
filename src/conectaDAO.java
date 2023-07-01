@@ -5,29 +5,23 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Adm
- */
 public class conectaDAO {
-    
-    public Connection connectDB(){
+
+    private String url = "jdbc:mysql://localhost:3306/leiloes"; //Nome da base de dados
+    private String user = "root"; //nome do usuário do MySQL
+    private String password = "z5abg0ty";
+
+    public Connection connectDB() {
         Connection conn = null;
-        
         try {
-        
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/uc11?user=root&password=");
-            
-        } catch (SQLException erro){
+
+            conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Conexão realizada com sucesso");
+
+        } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro ConectaDAO" + erro.getMessage());
         }
         return conn;
     }
-    
+
 }
